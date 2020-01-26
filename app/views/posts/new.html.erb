@@ -8,6 +8,7 @@
     <%= f.label :description %> <br/>
     <%= f.text_area :description, class: "form-control", placeholer: "description" %><br/>
     
+    <%= f.hidden_field :user_id, class: "form-control", value: current_user.id %><br/>
     <%= f.submit %>
   <% end %>
 </div>

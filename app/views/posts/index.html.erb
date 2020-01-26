@@ -8,9 +8,20 @@
       <p>
         <span><%= post.description %>
       </p>
+      <p>
+        <a href="#" class="author">
+          <% if !post.user.nil? %>
+            <%=post.user.email %>
+          <% else %>
+            신원미상
+          <% end %>
+        </a>
+      </p>
         
       <%= link_to "show" , post_path(post) %>
-      <%= link_to "Edit" , edit_post_path(post)%>
+      <% if  current_user.id == post.user_id %>
+        <%= link_to "Edit" , edit_post_path(post)%>
+      <% end %>
       <%= link_to "Delete", post_path(post), method: "DELETE" %>
   </div>
   <% end %>
