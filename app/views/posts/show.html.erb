@@ -19,7 +19,12 @@
   </tbody>
 </table>
 
-
-<%= button_to "수정", edit_post_path(@post.id), {method: :get, class:"btn btn-dark d-flex justify-content-end" }%>
-<%= button_to "삭제", post_path(@post.id), {method: :delete ,class:"btn btn-dark d-flex justify-content-end"} %>
+<div class="d-flex justify-content-end">
+  <% if !@post.user.nil? && !current_user.nil? %>
+    <% if  current_user.id == @post.user_id %>
+      <%= button_to "Edit" , edit_post_path(@post.id), {method: :get, class:"btn btn-dark" }%>  &nbsp; 
+      <%= button_to "Delete", post_path(@post.id), {method: :delete, class:"btn btn-dark"} %>  &nbsp; 
+    <% end %>
+  <% end %>
+</div>
 
