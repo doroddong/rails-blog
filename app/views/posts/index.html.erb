@@ -9,9 +9,9 @@
         <span><%= post.description %>
       </p>
         
-      <%= link_to "show" , post_path(post.id) %>
-      <%= link_to "Edit" %>
-      <%= link_to "Delete" %>
+      <%= link_to "show" , post_path(post) %>
+      <%= link_to "Edit" , edit_post_path(post)%>
+      <%= link_to "Delete", post_path(post), method: "DELETE" %>
   </div>
   <% end %>
 </div>
