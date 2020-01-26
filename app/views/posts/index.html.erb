@@ -1,32 +1,44 @@
-<div>
-  <% @post.each do |post| %>
-  <div>
-    <article>
-      <h2>
-        <a href="#"><%= post.title %></a>
-      </h2>
-      <p>
-        <span><%= post.description %>
-      </p>
-      <p>
-        <a href="#" class="author">
-          <% if !post.user.nil? %>
-            <%=post.user.email %>
-          <% else %>
-            신원미상
-          <% end %>
-        </a>
-      </p>
-        
-      <%= link_to "show" , post_path(post) %>
-      <% if  current_user.id == post.user_id %>
-        <%= link_to "Edit" , edit_post_path(post)%>
-      <% end %>
-      <%= link_to "Delete", post_path(post), method: "DELETE" %>
-  </div>
-  <% end %>
+<div class="container">
+
+  <header class="jumbotron my-4">
+    <h1 class="display-3">Most Hit!!</h1>
+    <p class="lead">This is Most Hit</p>
+    <a href="#" class="btn btn-primary btn-lg">More!!</a>
+  </header>
+
+  <div class= "row text-center">
+    <% @post.each do |post| %>
+      <div class= "col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          
+          <div class="card-body">
+            <h4 class="card-title"><%= post.title %></h4>
+            <p class="card-text">
+              <%= post.description %>
+            </p>
+            <p>
+              by
+              <a href="#" class="author">
+              <% if !post.user.nil? %>
+                 <%=post.user.email %>
+              <% else %>
+                신원미상
+              <% end %>
+              </a>
+            </p>
+            <%= link_to "Show" , post_path(post) %> &nbsp; 
+            <% if !post.user.nil? %>
+              <% if  current_user.id == post.user_id %>
+                <%= link_to "Edit" , edit_post_path(post)%>  &nbsp; 
+                <%= link_to "Delete", post_path(post), method: "DELETE" %>  &nbsp; 
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
 </div>
 
-<li>
-  <%= link_to "Post", new_post_path %>
-</li>
+<div class=" d-flex justify-content-end">
+    <%= button_to "글쓰기", new_post_path , {method: :get , class:"btn btn-primary btn-lg"} %>
+</div>

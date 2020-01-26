@@ -5,26 +5,64 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <% if current_user %>
-      <li>
-        <span style="color:red !important;"><%= current_user.email %>
-      </li>
-      <li>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete, style: "color:red !important;" %>
-      </li>
-      <% else %>
-        <li>
-          <%= link_to "Sign in", new_user_session_path, style:"color:red !important;" %>
-          <%= link_to "Sign up", new_user_registration_path, style:"color:red !important;" %>
-        </li>
-    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <strong>똥스토리</strong> 
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div class ="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <%= link_to "Home", root_path, class:"nav-link" %>
+            <%= link_to "Posts", posts_path, class:"nav-link" %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a> 
+            </li>
+          </ul>
+            &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; 
+        </div>
+        <div>
+          <strong>
+            <% if current_user %>
+              <li class="nav-item collapse navbar-collapse" style="margin:3px color:white !important;">
+                <span style="color:white !important;"><%= current_user.email %></span>  &nbsp; &nbsp;
+                <%= link_to "Sign out", destroy_user_session_path, method: :delete , style:"color:white !important;" %>
+              
+              <% else %>
+                <li class="nav-item collapse navbar-collapse" style="margin:3px">
+                  <%= link_to "Sign in", new_user_session_path, style:"color:white !important;"%>  &nbsp; &nbsp;
+                  <%= link_to "Sign up", new_user_registration_path, style:"color:white !important;" %>
+                </li>
+            <% end %>
+          </strong>
+        </div>
+      </div>
+    </nav>
 
     <%= yield %>
+
+    <footer class="py-5 bg-dark fixed-bottom">
+      <div>
+        <p class="m-0 text-center text-white">Copyright &copy; Doroddong</p>
+      </div>
+    </footer>
   </body>
 </html>
