@@ -10,6 +10,21 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <li>
+        <span style="color:red !important;"><%= current_user.email %>
+      </li>
+      <li>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, style: "color:red !important;" %>
+      </li>
+      <% else %>
+        <li>
+          <%= link_to "Sign in", new_user_session_path, style:"color:red !important;" %>
+          <%= link_to "Sign up", new_user_registration_path, style:"color:red !important;" %>
+        </li>
+    <% end %>
+
+
     <%= yield %>
   </body>
 </html>
