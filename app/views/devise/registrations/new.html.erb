@@ -1,0 +1,55 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class= "col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class= "card-title text-center">Sign Up</h5>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+
+            <form class="form-signin">
+              <div class="form-label-group">
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+                </div>
+              </div>
+
+              <div class="form-label-group">
+                <div class="field">
+                  <%= f.label :password, class:"card-signin" %>
+                  <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+                </div>
+              </div>
+
+              <div class="form-label-group">
+                <div class="field">
+                  <%= f.label :password_confirmation, class:"card-signin" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+                </div>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Sign up",class: "btn btn-lg btn-primary btn-block" %>
+              </div>
+              <br>
+              <span> Already Sign up?</span>
+              <%= render "devise/shared/links" %>
+
+              <hr class="my-4">
+              <button class="btn btn-lg btn-google btn-block" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+              <button class="btn btn-lg btn-facebook btn-block" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
