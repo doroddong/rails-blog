@@ -15,55 +15,70 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-          <strong>똥스토리</strong> 
-        </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top text-white mt-auto" style="font-size:1.1rem;">
+
+      <div class="d-lg-none">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class ="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <%= link_to "Home", root_path, class:"nav-link" %>
-            <%= link_to "Posts", posts_path, class:"nav-link" %>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a> 
-            </li>
-          </ul>
-            &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; 
+
+
+      </div>
+      
+      <%= link_to root_path, class:"navbar-brand font-weight-bold far fa-surprise d-flex justify-content-between",style:"font-size: 2em;" do %>
+      <% end %>
+
+      <div class="align-content-center justify-content-end wider-992">
+        <a href="#"><span style ="color:white; font-size:1.5em;"><i class="fas fa-bell"></i></span></a> &nbsp; &nbsp;
+      </div>
+
+      <div class ="collapse navbar-collapse position-relative" id="navbarResponsive">
+        <div class="flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 d-flex align-items-center align-self-center my-auto">
+          <form><fieldset><input type="search" /><button type="submit" class="search"><i class="fa fa-search"></i></button></fieldset></form>
         </div>
-        <div>
-          <strong>
-            <% if current_user %>
-              <li class="nav-item collapse navbar-collapse" style="margin:3px color:white !important;">
-                <span style="color:white !important;"><%= current_user.email %></span>  &nbsp; &nbsp;
-                <%= link_to "Sign out", destroy_user_session_path, method: :delete , style:"color:white !important;" %>
-              
-              <% else %>
-                <li class="nav-item collapse navbar-collapse" style="margin:3px">
-                  <%= link_to "Sign in", new_user_session_path, style:"color:white !important;"%>  &nbsp; &nbsp;
-                  <%= link_to "Sign up", new_user_registration_path, style:"color:white !important;" %>
-                </li>
-            <% end %>
-          </strong>
+    
+        <div class="navbar-nav position-relative text-white ">
+          <%= link_to "Posts", posts_path, class:"nav-link text-white" %>
+          <a class="nav-link text-white" href="#">About</a>
+          <a class="nav-link text-white" href="#">Services</a>
+          <a class="nav-link text-white" href="#">Contact</a> 
         </div>
+      </div>
+
+      
+      <div class ="collapse navbar-collapse position-relative justify-content-end">
+        <div class="navbar-nav align-content-center align-middle">
+          <div class="align-content-center justify-content-end narrower-992" >
+            <a href="#"><span style ="color:white; font-size:1.25em;"><i class="fas fa-bell"></i></span></a> &nbsp; &nbsp;
+          </div>
+        </div>
+      </div>
+      <div class="positive-relative justify-content-end narrower-992">
+        <strong class="align-content-center">
+          <% if current_user %>
+            <div class="nav-item" style="margin:3px">
+              <%= link_to do %><span style="color:white !important;"><%= current_user.email %></span><% end %>  &nbsp; &nbsp;
+              <%= link_to "Sign out", destroy_user_session_path, method: :delete , style:"color:white !important;" %>
+            </div>
+            <% else %>
+              <div class="nav-item" style="margin:3px">
+                <%= link_to "Sign in", new_user_session_path, style:"color:white !important;"%>  &nbsp; &nbsp;
+                <%= link_to "Sign up", new_user_registration_path, style:"color:white !important;" %>
+              </div>
+          <% end %>
+        </strong>
       </div>
     </nav>
 
     <%= yield %>
 
-    <footer class="py-5 bg-dark fixed-bottom">
+    <footer class="py-3 bg-dark fixed-bottom">
       <div>
         <p class="m-0 text-center text-white">Copyright &copy; Doroddong</p>
       </div>
     </footer>
+
+    
   </body>
 </html>

@@ -14,7 +14,7 @@
  *= require_self
  */
 
- .carousel-item {
+.carousel-item {
   height: 65vh;
   min-height: 350px;
   background: no-repeat center center scroll;
@@ -25,11 +25,22 @@
 }
 
 body{
-  margin : 50px;
+  padding : 100px;
+  position: relative;
 }
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
+}
+
+.card:hover{
+  transition: .15s box-shadow,.15s transform;
+  border-radius: .5rem;
+  box-shadow: 0 2rem 1.5rem -1.5rem rgba(33,37,41,.15), 0 0 1.5rem 0.5rem rgba(33,37,41,.05);
+  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  box-sizing: border-box
 }
 
 .card-signin {
@@ -156,4 +167,92 @@ body{
   .form-label-group input:-ms-input-placeholder {
     color: #777;
   }
+}
+@media all and (max-width:992px){
+  .narrower-992{
+    display: none;
+  }
+  .wider-992{
+    display:block;
+  }
+}
+@media all and (min-width:992px){
+  .wider-992{
+    display: none;
+  }
+  .narrower-992{
+    display:block;
+  }
+}
+
+
+fieldset {
+  position: relative;
+  display: inline-block;
+  padding: 0 0 0 40px;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+input,
+.search {
+  position: relative;
+  width: 200px;
+  height: 40px;
+  padding: 0;
+  display: inline-block;
+  float: left;
+}
+
+input {
+  color: #666;
+  z-index: 2;
+  border: 0 none;
+}
+input:focus {
+  outline: 0 none;
+}
+input:focus + .search {
+  -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
+          transform: translate(0, 0);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+input:focus + .search .fa {
+  -webkit-transform: translate(0px, 0);
+      -ms-transform: translate(0px, 0);
+          transform: translate(0px, 0);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  color: #fff;
+}
+
+.search {
+  z-index: 1;
+  width: 50px;
+  border: 0 none;
+  background: #ceb980;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;  
+  -webkit-transform: translate(-50px, 0);
+      -ms-transform: translate(-50px, 0);
+          transform: translate(-50px, 0);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+}
+
+.fa-search {
+  font-size: 1.0rem;
+  color: #29abe2;
+  z-index: 3;
+  top: 25%;
+  -webkit-transform: translate(-190px, 0);
+      -ms-transform: translate(-190px, 0);
+          transform: translate(-190px, 0);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
+  -webkit-transition: all 0.1s ease-in-out;
+          transition: all 0.1s ease-in-out;
 }
