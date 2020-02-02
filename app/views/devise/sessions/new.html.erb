@@ -21,11 +21,13 @@
                   </div>
                 </div>
 
-                <div class="custom-control custom-checkbox mb-3">
-                  <% if devise_mapping.rememberable? %>
-                      <%= f.check_box :remember_me ,class:"custom-control-input" %>
-                      <%= f.label :remember_me , class: "custom-control-label" %>
-                  <% end %>
+                <div class="form-group">
+                  <div class="custom-control custom-switch my-3">
+                    <% if devise_mapping.rememberable? %>
+                        <%= f.check_box :remember_me ,type:"checkbox", class:"custom-control-input", id:"customSwitch1", checked:"" %>
+                        <%= f.label :remember_me , class: "custom-control-label" ,for:"customSwitch1" %>
+                    <% end %>
+                  </div>
                 </div>
 
                 <div class="actions">
