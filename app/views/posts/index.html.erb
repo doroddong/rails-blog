@@ -38,7 +38,7 @@
                   <%= link_to "Delete", post_path(post), method: "DELETE" %>  &nbsp; 
                 <% end %>
               <% end %>
-              <%= render partial:"toggle_like.html.erb", locals: {object: post} %>
+              <%= render partial:"posts/shared/toggle_like.html.erb", locals: {object: post} %>
             </div>
           </div>
         </div>

@@ -1,5 +1,0 @@
-<% if current_user.likes.find_by(post_id: object.id)  %>
-  <%= link_to "쪼아요", toggle_like_post_path(object.id), class:"btn btn-md btn-primary", remote: true %>
-<% else %>
-  <%= link_to "시러요", toggle_like_post_path(object.id), class:"btn btn-md btn-dark", remote: true %>
-<% end %>
