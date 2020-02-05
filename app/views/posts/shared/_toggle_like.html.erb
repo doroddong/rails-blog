@@ -1,18 +1,30 @@
-<script type="text/javascript">
+  <script type="text/javascript">
 
-  $("#toggle_like").click(function (){
-    $(this).toggleClass("btn-primary btn-dark")
-    $(this).addClass("btn-dark");
-    $(this).removeClass("btn-primary");
-  })
+    $("a").click(function(){
+      $(this).toggleClass("btn-primary");
+      $(this).toggleClass("btn-dark");
+    });
 
-  })
-
-</script>
-
+  </script>
 
 <% if current_user.likes.find_by(post_id: object.id)  %>
-  <%= link_to "쪼아요", toggle_like_post_path(object.id), class:"btn btn-md btn-primary", remote: true, id:"toggle_like" %>
+  <%= link_to, toggle_like_post_path(object.id), remote: true do %>
+    <span style="font-size: 2em; color: Dodgerblue">
+      <i class="fas fa-thumbs-up"></i>
+    </span>
+  <% end %>
 <% else %>
-  <%= link_to "시러요", toggle_like_post_path(object.id), class:"btn btn-md btn-dark", remote: true, id: "toggle_like" %>
+  <%= link_to , toggle_like_post_path(object.id), remote: true do %>
+    <span style="font-size:2em;">
+      <i class="far fa-thumbs-up"></i>
+    </span>
+  <% end %>
 <% end %>
+
+<script type="text/javascript">
+
+  $("a").click(function(){
+    $(this).toggleClass("btn-primary");
+    $(this).toggleClass("btn-dark");
+  });
+</script>
