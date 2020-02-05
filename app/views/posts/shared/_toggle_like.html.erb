@@ -1,20 +1,18 @@
-  <script type="text/javascript">
+<script type="text/javascript">
 
-    $("a").click(function(){
-      $(this).toggleClass("btn-primary");
-      $(this).toggleClass("btn-dark");
-    });
-
-  </script>
+  $("a").click(function(){
+    $(this).children("span").children("i").toggleClass("fas far");
+  });
+</script>
 
 <% if current_user.likes.find_by(post_id: object.id)  %>
-  <%= link_to, toggle_like_post_path(object.id), remote: true do %>
-    <span style="font-size: 2em; color: Dodgerblue">
+  <%= link_to toggle_like_post_path(object.id), remote: true do %>
+    <span style="font-size: 2em;">
       <i class="fas fa-thumbs-up"></i>
     </span>
   <% end %>
 <% else %>
-  <%= link_to , toggle_like_post_path(object.id), remote: true do %>
+  <%= link_to toggle_like_post_path(object.id), remote: true do %>
     <span style="font-size:2em;">
       <i class="far fa-thumbs-up"></i>
     </span>
@@ -24,7 +22,6 @@
 <script type="text/javascript">
 
   $("a").click(function(){
-    $(this).toggleClass("btn-primary");
-    $(this).toggleClass("btn-dark");
+    $(this).children("span").children("i").toggleClass("fas far");
   });
 </script>
