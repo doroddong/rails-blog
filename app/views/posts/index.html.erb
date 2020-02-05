@@ -32,13 +32,15 @@
                 <% end %>
                 </a>
               </p>
-              <% if !post.user.nil? && !current_user.nil? %>
-                <% if  current_user.id == post.user_id %>
-                  <%= link_to "Edit" , edit_post_path(post)%>  &nbsp; 
-                  <%= link_to "Delete", post_path(post), method: "DELETE" %>  &nbsp; 
+              <div class="d-flex position-relative align-middle justify-content-start">
+                <% if !post.user.nil? && !current_user.nil? %>
+                  <% if  current_user.id == post.user_id %>
+                    <%= link_to "Edit" , edit_post_path(post)%>  &nbsp; 
+                    <%= link_to "Delete", post_path(post), method: "DELETE" %>  &nbsp; 
+                  <% end %>
                 <% end %>
-              <% end %>
-              <%= render partial:"posts/shared/toggle_like.html.erb", locals: {object: post} %>
+                <%= render partial:"posts/shared/toggle_like.html.erb", class:"position-relative justify-content-end", locals: {object: post} %>
+              </div>
             </div>
           </div>
         </div>
