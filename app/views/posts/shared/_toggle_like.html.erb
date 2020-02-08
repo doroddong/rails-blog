@@ -5,22 +5,29 @@
   });
 </script>
 
-<% if current_user.likes.find_by(post_id: object.id)  %>
-  <%= link_to toggle_like_post_path(object.id), remote: true, class:"position-relative justify-content-end" do %>
-    <span style="font-size: 2em;" class="text-right">
-      <i class="fas fa-thumbs-up"></i>
-    </span>
+<% if !current_user.nil? %>
+  <% if current_user.likes.find_by(post_id: object.id) %>
+    <%= link_to toggle_like_post_path(object.id), remote: true, class:"ml-10 pl-10" do %>
+      <span style="font-size: 2em;" class="text-right">
+        <i class="fas fa-thumbs-up"></i>
+      </span>
+    <% end %>
+  <% else %>
+    <%= link_to toggle_like_post_path(object.id), remote: true, class:"ml-10 pl-10" do %>
+      <span style="font-size:2em;" class="text-right">
+        <i class="far fa-thumbs-up text-secondary"></i>
+      </span>
+    <% end %>
   <% end %>
 <% else %>
-  <%= link_to toggle_like_post_path(object.id), remote: true, class:"position-relative justify-content-end" do %>
+  <%= link_to new_user_session_path, class:"" do %>
     <span style="font-size:2em;" class="text-right">
       <i class="far fa-thumbs-up text-secondary"></i>
-    </span>
-  <% end %>
+    </span> 
+  <% end %> 
 <% end %>
 
 <script type="text/javascript">
-
   $("a").click(function(){
     $(this).children("span").children("i").toggleClass("fas far text-secondary");
   });
