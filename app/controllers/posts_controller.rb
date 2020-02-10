@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :load_post, only: [:show,:edit,:update,:destroy, :toggle_like]
-  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :authenticate_user!
 
   
   def index
@@ -36,10 +36,14 @@ class PostsController < ApplicationController
   end
 
   def toggle_like
-    @like = Like.find_by(user_id: current_user.id, post_id: params[:id])
-    @like ? @like.destroy : current_user.likes.create(user_id: current_user.id, post_id: params[:id])
-
+    @like = Like.find_by(user_id: current_user.id, post_id: @post.id)
+    @like ? @like.destroy : current_user.likes.create(post_id: @post.id)
   end
+
+  def ajax_test
+    puts 'aaaaaaaaa'
+    puts params[:ajax_test]
+  end 
 
   private
   def post_params

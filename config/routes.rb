@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     member do 
       get :toggle_like
     end
+
+    collection do
+      get :ajax_Test
+    end
   end
 
 end

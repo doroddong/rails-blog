@@ -1,0 +1,2 @@
+var html = "<%= j(render(partial: 'posts/shared/like', locals: {post: @post})) %>"
+$("#post-<%= @post.id %>").html(html)

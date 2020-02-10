@@ -42,8 +42,9 @@
                     <%= link_to "Delete", post_path(post), method: "DELETE" %>  &nbsp; 
                   <% end %>
                 <% end %>
-                <%= render partial:"posts/shared/toggle_like.html.erb", class:"position-relative justify-content-end", locals: {object: post} %>
+                <%= render partial:"posts/shared/like.html.erb", class:"position-relative justify-content-end", locals: {post: post} %>
               </div>
+              <button value="a" class="hello-button">안녕</button>
             </div>
           </div>
         </div>
