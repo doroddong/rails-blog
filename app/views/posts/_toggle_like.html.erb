@@ -1,0 +1,23 @@
+<% if !current_user.nil? %>
+  <div id="post-<%= post.id %>">
+    <% if current_user.likes.find_by(post_id: post.id) %>
+      <%= link_to toggle_like_post_path(post.id), remote: true, class:"" do %>
+        <span style="font-size: 2em;" class="text-right">
+          <i class="fas fa-thumbs-up"></i>
+        </span>
+      <% end %>
+    <% else %>
+      <%= link_to toggle_like_post_path(post.id), remote: true, class:"" do %>
+        <span style="font-size:2em;" class="text-right">
+          <i class="far fa-thumbs-up text-secondary"></i>
+        </span>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <%= link_to new_user_session_path, class:"" do %>
+    <span style="font-size:2em;" class="text-right">
+      <i class="far fa-thumbs-up text-secondary"></i>
+    </span> 
+  <% end %> 
+<% end %>
