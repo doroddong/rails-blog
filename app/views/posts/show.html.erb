@@ -28,3 +28,15 @@
   <% end %>
 </div>
 
+<h2><%= @comments.count %> Comments</h2>  <!-- 추후 업뎃 -->
+
+<div id="comments">
+  <% @comments.each do |comment| %>
+    <div id="<%=comment.id%>-comment">
+      <%= render partial:"comments/show.html.erb", class:"", locals: {comment: comment} %>
+    </div>
+  <% end %>
+</div>
+
+<%= render partial:"comments/new.html.erb", class:"bottem-fixed p-10 m-10 fixed-bottom" %>
+

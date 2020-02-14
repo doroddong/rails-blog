@@ -1,0 +1,15 @@
+<div class ="container">
+  <br>
+
+  <h1>New comment</h1>
+
+  <%= form_for [@post, @post.comments.build], remote: true do |f| %>
+    <%= f.label :content, class:"form-group" %> <br/>
+    <%= f.text_area :content, class: "form-control", placeholer: "content" %><br/>
+    
+    <%= f.hidden_field :post_id, class: "form-control", value: @post.id%>
+    <%= f.hidden_field :user_id, class: "form-control", value: current_user.id %><br/>
+
+    <%= f.submit "Comment!", class:"btn btn-primary" %>
+  <% end %>
+</div>
