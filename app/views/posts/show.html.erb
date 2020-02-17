@@ -28,15 +28,32 @@
   <% end %>
 </div>
 
-<h2><%= @comments.count %> Comments</h2>  <!-- 추후 업뎃 -->
+<h3>댓글 <span id="comments-count" style="color:red" value=<%=@comments.count%>><%= @comments.count %></span></h3>  <!-- 추후 업뎃 -->
 
-<div id="comments">
+<hr>
+
+<ul id="comments">
   <% @comments.each do |comment| %>
     <div id="<%=comment.id%>-comment">
       <%= render partial:"comments/show.html.erb", class:"", locals: {comment: comment} %>
     </div>
   <% end %>
+</ul>
+
+
+<div class ="container">
+  <br/>
+  <h3>댓글 작성</h3>
+
+  <%= form_for Comment.new, url: post_comments_path(@post.id),remote: true do |f| %>
+    
+    <%= f.text_area :content, class: "form-control", placeholer: "content" %><br/>
+    <%= f.hidden_field :post_id, class: "form-control", value: @post.id %>
+    <% if !current_user.nil? %>
+      <%= f.hidden_field :user_id, class: "form-control", value: current_user.id %><br/>
+    <% end %>
+    <%= f.submit "Comment", class:"btn btn-primary" %>
+  <% end %>
 </div>
 
-<%= render partial:"comments/new.html.erb", class:"bottem-fixed p-10 m-10 fixed-bottom" %>
 

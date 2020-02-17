@@ -1,13 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :load_post, only: [:create,:destroy]
-
+  before_action :load_post, only: %i(create, destroy)
 
   def create
     @comment = Comment.create comment_params
     
-    redirect_to post_path(@comment.post_id)
-    #render 'create.js', locals:{comment:@comments}
-
+    render 'create.js', locals:{comment:@comment}
   end
 
   def destroy
@@ -27,9 +24,5 @@ class CommentsController < ApplicationController
   def load_post
     @post = Post.find_by(id:params[:id])
   end
-
-  ##def load_comment
-  #  @comment = Comment.find_by(id??)
-  #end
 
 end
