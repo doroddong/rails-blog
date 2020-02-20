@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :load_post, only: [:create,:destroy]
-  before_action :load_comment, only: [:destroy]
+  before_action :load_post, only: [:create,:destroy,:edit,:update]
+  before_action :load_comment, only: [:destroy,:edit,:update]
 
   def create
     @comment = Comment.create comment_params
@@ -15,6 +15,18 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+  end
+
+  def edit
+    render 'edit.js', locals:{comment:@comment}
+  end
+
+  def update
+    
+    @comment.content = params[:comment][:content]
+    @comment.user_id = current_user.id
+    @comment.save
+    render 'update.js', locals:{comment:@comment}
   end
 
 

@@ -1,0 +1,6 @@
+<div class="d-flex p-2 flex-lg-row flex-lg-column font-weight-bolder justify-content-end" >
+  <%= form_for @comment ,url: post_comment_path(comment.post_id,comment.id), method: :patch ,style:"width:auto;", remote:true do |f| %>
+    <%= f.text_area :content, class:"form-control", placeholder: "content"%>
+    <%= f.submit "Submit",class:"btn-sm btn-primary" %>
+  <% end %>
+</div>
