@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   
   def index
-    @post = Post.all
+    @posts = Post.page params[:page]
   end
 
   def create
