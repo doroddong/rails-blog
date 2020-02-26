@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     member do 
       get :toggle_like
     end
-    resources :comments
+    resources :comments do
+      member do
+        get :subcomment
+      end
+    end
   end
-
 end

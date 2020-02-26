@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :load_post, only: [:create,:destroy,:edit,:update]
-  before_action :load_comment, only: [:destroy,:edit,:update]
+  before_action :load_post, only: [:create,:destroy,:edit,:update,:co_comment]
+  before_action :load_comment, only: [:destroy,:edit,:update,:co_comment]
 
   def create
     @comment = Comment.create comment_params
@@ -29,7 +29,9 @@ class CommentsController < ApplicationController
     render 'update.js', locals:{comment:@comment}
   end
 
-
+  def subcomment
+    render 'subcomment.js', locals: {comment:@comment}
+  end
   private
   def comment_params
     params.require(:comment).permit(:content,:post_id,:user_id)
@@ -44,5 +46,4 @@ class CommentsController < ApplicationController
   def load_comment
     @comment = Comment.find params[:id]
   end
-  
 end

@@ -1,4 +1,4 @@
-<li style="list-style:none;">
+<li style="list-style:none;" id="<%=comment.post_id%>-<%=comment.id%>">
   <div class="d-flex">
     <img src="https://image.winudf.com/v2/image1/Y29tLmtha2FvLmZyaWVuZHNzdGlja2VyYXBwX2ljb25fMTU1MDYyMTM4OV8wNjQ/icon.png?w=170&fakeurl=1" width="70px" height="70px"/>
     <div class="m-2 flex-column">
@@ -11,7 +11,8 @@
   </div>
   <div class="d-flex p-2">
     <%= link_to "수정", edit_post_comment_path(comment.post_id,comment.id), remote:true, class:"text-danger font-weight-bolder" %> &nbsp; &nbsp;
-    <%= link_to "삭제", post_comment_path(comment.post_id,comment.id), method: :delete, remote: true, class:"text-danger font-weight-bolder" %>
+    <%= link_to "삭제", post_comment_path(comment.post_id,comment.id), method: :delete, remote: true, class:"text-danger font-weight-bolder" %>&nbsp; &nbsp;
+    <%= link_to "답글", subcomment_post_comment_path(comment.post_id,comment.id), remote: true, class:"text-danger font-weight-bolder" %>
   </div>
   <hr>
 </li>
