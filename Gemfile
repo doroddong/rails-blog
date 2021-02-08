@@ -6,7 +6,7 @@ ruby '2.4.2'
 gem 'therubyracer'
 gem 'devise'
 gem 'jquery-rails'
-gem 'carrierwave','~>1.0'
+gem 'carrierwave','~>1.3'
 gem 'kaminari'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
